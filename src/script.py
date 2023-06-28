@@ -62,7 +62,7 @@ def comparison(left, right):
             df['closest'][i] = lst
 
 
-def separate_to_threads():
+def split_to_threads():
     pool = int(np.linspace(0, df.shape[0], 7)[1])
 
     t1 = threading.Thread(target=comparison, args=(0, pool))
@@ -86,6 +86,6 @@ def separate_to_threads():
     t5.join()
     t6.join()
 
-separate_to_threads()
+split_to_threads()
 
 df.drop(columns=['edited']).to_csv('../datasets/result.csv')
